@@ -1,0 +1,22 @@
+version: '3'
+services:
+  train:
+    build:
+      context: .
+      dockerfile: docker/skynet-train/Dockerfile.gpu
+    volumes:
+    - ./:/workdir
+    - ./output:/output
+    env_file:
+    - docker.env
+  monitor:
+    build:
+      context: .
+      dockerfile: docker/skynet-monitor/Dockerfile
+    volumes:
+    - ./:/workspace
+    - ./output:/output
+    ports:
+    - "80:8080"
+    env_file:
+    - docker.env
