@@ -70,6 +70,44 @@ On an instance where training is happening, expose a simple monitoring page with
 docker run --rm -it -v /mnt/training:/output -p 80:8080 developmentseed/skynet-monitor
 ```
 
+## Building images locally
+
+If you want to build your own images, you can duplicate the above
+instructions using [docker-compose](https://docs.docker.com/compose/)
+and - when GPU access is needed -
+[nvidia-docker-compose](https://github.com/eywalker/nvidia-docker-compose):
+
+Building all local docker images:
+
+```sh
+docker-compose build
+```
+
+Running the training (`nvidia-docker-compose` is needed here):
+
+```sh
+nvidia-docker-compose run \
+    -v /path/to/training/dataset:/data \
+    train \
+        --sync s3://your-bucket/training/blahbla
+```
+
+As above, other options can be added to modify the training.
+
+If using `--sync`, make sure your AWS credentials are stored in a
+`docker.env` file in the form:
+
+```
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+```
+
+Finally, monitoring can be viewed using:
+
+```sh
+docker-compose up monitor
+```
+
 # Details
 
 Prerequisites / Dependencies:
