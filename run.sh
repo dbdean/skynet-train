@@ -6,6 +6,6 @@ nvidia-docker run \
 	      --env-file docker.env \
 	      skynet-train:gpu \
 	        --sync s3://skynet-dbdean/output \
-	        --iterations 10000 \
+	        --iterations 30000 \
 	        --snapshot 10000
 
