@@ -4,3 +4,4 @@ temp
 docker.env
 data
 output
+nvidia-docker-compose.yml
