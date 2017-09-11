@@ -1,10 +1,8 @@
 #!/bin/bash
-nvidia-docker build -t skynet-train:gpu -f docker/skynet-train/Dockerfile.gpu .
-nvidia-docker run \
+nvidia-docker-compose build
+nvidia-docker-compose run \
 	      -v $(pwd)/../skynet-data/data:/data \
-	      -v $(pwd)/output:/output \
-	      --env-file docker.env \
-	      skynet-train:gpu \
+	      train \
 	        --sync s3://skynet-dbdean/output \
 	        --iterations 30000 \
 	        --snapshot 10000
