@@ -92,7 +92,8 @@ nvidia-docker-compose run \
         --sync s3://your-bucket/training/blahbla
 ```
 
-As above, other options can be added to modify the training.
+As above, other options can be added to modify the training. By
+default, the output will be in the `./output` directory.
 
 If using `--sync`, make sure your AWS credentials are stored in a
 `docker.env` file in the form:
