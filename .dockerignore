@@ -3,5 +3,4 @@ node_modules
 temp
 *.pyc
 docker.env
-data
 output
